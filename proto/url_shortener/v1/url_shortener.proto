@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package url_shortener;
+
+option go_package = "url_shortener/pkg/gen/go/url_shortener_v1"
+
+service Shortener {
+    rpc Shorten(ShortereRequest) returns (ShortenerResponse) {}
+    rpc Get(GetRequest) returns (GetResponse) {}
+}
+
+message ShortereRequest {
+    string url
+}
+
+message ShortenerResponse {
+    string short_code
+}
+
+message GetRequest {
+    string short_code
+}
+
+message GetResponse {
+    string url
+}
